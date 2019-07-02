@@ -26,7 +26,7 @@ add_subdirectory(pybind11)
 add_subdirectory(asmjit)
 
 pybind11_add_module(pointwise_compiler SHARED ${COMPILER_SRCS})
-target_link_libraries(pointwise_compiler PUBLIC torch caffe2 c10 pybind11 asmjit)
+target_link_libraries(pointwise_compiler PUBLIC torch pybind11 asmjit)
 
 target_include_directories(pointwise_compiler PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}/src
