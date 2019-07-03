@@ -11,7 +11,17 @@ cd pytorch_compiler_tutorial
 PYTHONPATH=build python test.py
 ```
 
-Expect to see this output:
+This test benchmarks the following function with inputs of size 1024, run 100 times:
+
+```
+def foo(a, b):
+  c = a.mul(b)
+  a = c.mul(c)
+  a = c.mul(a)
+  return a
+```
+
+We expect to see this output:
 
 ```
 -- Default IR --
