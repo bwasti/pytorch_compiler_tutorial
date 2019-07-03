@@ -109,7 +109,7 @@ void PointwiseCompiler::run(torch::jit::Stack& stack) {
   }
 }
 
-CompiledCode PointwiseCompiler::emitOperation(
+void PointwiseCompiler::emitOperation(
     const Node* node,
     const std::set<const Node*>& seen,
     asmjit::X86Assembler& assembler,
@@ -121,7 +121,7 @@ CompiledCode PointwiseCompiler::emitOperation(
       for (auto use : A->uses()) {
         if (seen.find(use.user) != seen.end()) {
           C_reg = reg_manager.getFreeValueReg();
-          assembler.movaps(C_reg, reg_manager.getValueReg(A));
+          assembler.movups(C_reg, reg_manager.getValueReg(A));
         }
       }
       auto B = node->inputs()[1];

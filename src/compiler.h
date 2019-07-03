@@ -17,7 +17,7 @@ class PointwiseCompiler {
   static bool supported(const torch::jit::Node* node);
 
  private:
-  CompiledCode emitOperation(
+  void emitOperation(
       const torch::jit::Node* node,
       const std::set<const torch::jit::Node*>& seen,
       asmjit::X86Assembler& assembler,
