@@ -28,10 +28,12 @@ add_subdirectory(asmjit)
 pybind11_add_module(pointwise_compiler SHARED ${COMPILER_SRCS})
 target_link_libraries(pointwise_compiler PUBLIC torch pybind11 asmjit)
 
-target_include_directories(pointwise_compiler PUBLIC
+target_include_directories(pointwise_compiler
+  PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/src
-    ${PYTORCH_DIR}/include
     ${PYBIND11_INCLUDE_DIR}
     asmjit/src
+  PUBLIC
+    ${PYTORCH_DIR}/include
 )
 
